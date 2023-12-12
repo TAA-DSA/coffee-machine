@@ -30,4 +30,29 @@ resources = {
     "coffee": 100,
 }
 
-print(MENU['espresso'])
+dict_values = MENU['espresso'].values()
+print(dict_values)
+resources['Money'] = 0
+def coffee_machine_start():
+    start_machine = True
+    while start_machine:
+        ask_prompt = input("What would you like? (espresso/latte/cappuccino) : ").lower()
+        if ask_prompt == 'espresso' or ask_prompt == 'latte' or ask_prompt == 'cappuccino':
+            for keys, value in MENU[ask_prompt].items():
+                #check if resources are available to make the chosen drink
+                print(keys, value)
+        elif ask_prompt == 'report':
+            # loop through the dictionary using items to print the key value pair
+            for items, value in resources.items():
+
+
+                print(f'{items}: {value} ')
+        elif ask_prompt == "off":
+            start_machine = False
+    if not start_machine:
+        pass
+
+
+
+
+coffee_machine_start()
