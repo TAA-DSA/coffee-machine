@@ -25,18 +25,18 @@ MENU = {
 }
 
 resources = {
-    "water": 300,
-    "milk": 200,
-    "coffee": 100,
+"water": 300,
+"milk": 200,
+"coffee": 100,
 }
 
 resources['money'] = 0
+
 
 # ask_prompt = input("What would you like? (espresso/latte/cappuccino) : ").lower()
 # def report(ask_prompt, resources):
 
 def is_sufficient_resources(ingredients):
-
     for items in ingredients:
         if ingredients[items] >= resources[items]:
             print(f'Sorry not enough {ingredients[items]}')
@@ -45,7 +45,6 @@ def is_sufficient_resources(ingredients):
 
 
 def cost_check(ask_quarters, ask_dimes, ask_nickles, ask_pennies, drink):
-
     # print(ask_quarters, ask_dimes, ask_nickles, ask_pennies, drink)
     total = (0.25 * ask_quarters) + (0.10 * ask_dimes) + (0.05 * ask_nickles) + (0.01 * ask_pennies)
     if total < drink:
@@ -60,6 +59,7 @@ def cost_check(ask_quarters, ask_dimes, ask_nickles, ask_pennies, drink):
         print(f'Here is ${refund} in change')
         return True
 
+
 def make_coffee(drink, ask_prompt):
     for values in drink:
         resources[values] -= drink[values]
@@ -67,7 +67,6 @@ def make_coffee(drink, ask_prompt):
 
 
 def coffee_machine_start():
-
     start_machine = True
     while start_machine:
         ask_prompt = input("What would you like? (espresso/latte/cappuccino) : ").lower()
@@ -91,7 +90,7 @@ def coffee_machine_start():
 
         elif ask_prompt == 'espresso' or ask_prompt == 'latte' or ask_prompt == 'cappuccino':
 
-            #ask user for money in quarter, dimes, nickles, pennies
+            # ask user for money in quarter, dimes, nickles, pennies
             drink = MENU[ask_prompt]
             if (is_sufficient_resources(drink['ingredients'])):
                 print('Please insert coins')
@@ -103,16 +102,10 @@ def coffee_machine_start():
                     make_coffee(drink['ingredients'], ask_prompt)
             else:
                 print('Not enough resources available')
-
-
-
-
         elif ask_prompt == "off":
             start_machine = False
     if not start_machine:
         pass
-
-
 
 
 coffee_machine_start()
